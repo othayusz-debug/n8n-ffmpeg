@@ -1,23 +1,7 @@
-FROM alpine:3.19
+FROM n8nio/n8n:latest
 
-RUN apk update && apk add --no-cache \
-  nodejs \
-  npm \
-  ffmpeg \
-  tini \
-  bash \
-  ca-certificates \
-  openssl
-
-RUN npm install -g n8n
-
-RUN addgroup -g 1000 node && \
-    adduser -D -u 1000 -G node node
+USER root
+# Instala o FFmpeg
+RUN apk add --no-cache ffmpeg
 
 USER node
-WORKDIR /home/node
-
-EXPOSE 5678
-
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["n8n"]
