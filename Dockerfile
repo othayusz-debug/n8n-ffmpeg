@@ -2,7 +2,7 @@
 FROM mwader/static-ffmpeg:latest AS ffmpeg_source
 
 # Estágio 2: A imagem do n8n
-FROM n8nio/n8n:2.16.4
+FROM n8nio/n8n:2.18.3
 
 USER root
 
